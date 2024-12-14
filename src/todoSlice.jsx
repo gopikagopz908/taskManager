@@ -13,10 +13,11 @@
             state.todo=state.todo.filter((item)=>item.id!==action.payload)
         },
         edittodo:(state,action)=>{
-            let edititem=state.todo.find((item)=>item.id===action.payload.id)
-            if(edititem){
-                edititem.data=action.payload.data;
-            }
+            const{editid,editData}=action.payload
+            let editeditem=state.todo.map((item)=>item.id===editid?{...item,data:editData}:item)
+           state.todo=editeditem 
+            
+            
         }
 
 
